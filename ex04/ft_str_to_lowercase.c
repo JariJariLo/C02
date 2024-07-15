@@ -3,24 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kris <kris@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: crjarill <marvin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/09 16:14:26 by crjarill          #+#    #+#             */
-/*   Updated: 2024/07/13 11:44:34 by kris             ###   ########.fr       */
+/*   Created: 2024/07/10 16:25:36 by kris              #+#    #+#             */
+/*   Updated: 2024/07/10 16:25:36 by kris             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int is_alpha(char c)
+int lowercase(char c)
 {
-	return ((c>='A'&&c<='Z')||(c>='a'&&c<='z'));
-
+    return ((c>='a'&&c<='z'));
+	
 }
-
-int ft_str_is_numeric(char *str)
+int ft_str_is_lowercase(char *str)
 {
-		int i;
+    int i;
 		
 		i=0;
 		if(str[0]=='\0')
@@ -29,20 +28,17 @@ int ft_str_is_numeric(char *str)
 		}
 		while (str[i]!='\0')
 		{
-			if(!is_alpha(str[i]))
+			if(!lowercase(str[i]))
 			{
 				return (0);
 			}
-			
 			i++;
 		}
 			return (1);	
 }
-
-int main (int)
+int main()
 {
-	char str[20]="*";
-	int result = ft_str_is_numeric(str);
+    char str[20]="";
+	int result = ft_str_is_lowercase(str);
 	printf("%d\n",result);
-
 }
