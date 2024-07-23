@@ -1,44 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
+/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crjarill <marvin@42.fr>                  +#+  +:+       +#+        */
+/*   By: crjarill <crjarill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/10 16:25:36 by kris              #+#    #+#             */
-/*   Updated: 2024/07/10 16:25:36 by kris             ###   ########.fr       */
+/*   Created: 2024/07/24 00:46:27 by crjarill          #+#    #+#             */
+/*   Updated: 2024/07/24 01:23:07 by crjarill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int uppercase(char c)
+int	uppercase(char c)
 {
-    return ((c>='A'&&c<='Z'));
-	
+	return ((c >= 'A' && c <= 'Z'));
 }
-int ft_str_is_uppercase(char *str)
+
+int	ft_str_is_uppercase(char *str)
 {
-    int i;
-		
-		i=0;
-        if(str[0]=='\0')
+	int	i;
+
+	i = 0;
+	if (str[0] == '\0')
+	{
+		return (1);
+	}
+	while (str[i] != '\0')
+	{
+		if (!uppercase(str[i]))
 		{
-			return (1);
+			return (0);
 		}
-		while (str[i]!='\0')
-		{
-			if(!uppercase(str[i]))
-			{
-				return (0);
-			}
-			i++;
-		}
-			return (1);	
+		i++;
+	}
+	return (1);
 }
-int main()
+/*int	main(void)
 {
-    char str[20]="o";
+	char str[20] = "o";
 	int result = ft_str_is_uppercase(str);
-	printf("%d\n",result);
-}
+	printf("%d\n", result);
+}*/

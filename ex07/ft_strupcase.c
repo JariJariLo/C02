@@ -11,20 +11,26 @@
 /* ************************************************************************** */
 #include <stdio.h>
 
-char *ft_struppcase(char *str) {
-    int i = 0;
-    
-    while (str[i] != '\0') {
-        if (str[i] >= 'a' && str[i] <= 'z') {
-              str[i] = str[i] - 'a' + 'A'; 
-        }
-        i++;
-    }
-   return str;
+char	*ft_struppcase(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] >= 'a' && str[i] <= 'z')
+		{
+			str[i] = str[i] - 'a' + 'A';
+		}
+		i++;
+	}
+	return (str);
 }
 
-int main() {
-    char str[] = "abc";
-    printf("%s\n", ft_struppcase(str) );
-    return 0;
-}
+/*int	main(void)
+{
+	char	str[] = "abc";
+
+	printf("%s\n", ft_struppcase(str));
+	return (0);
+}*/
