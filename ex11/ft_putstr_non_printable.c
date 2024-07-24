@@ -9,8 +9,6 @@
 /*   Updated: 2024/07/24 01:24:53 by crjarill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
-
 int is_printable(char c) {
     return (c >= 32 && c <= 126);
 }
@@ -22,21 +20,30 @@ void hex_conv(char str) {
     write(1, "\\", 1);
 
     temp = (str >> 4) & 0xF;
-    n = temp < 10 ? '0' + temp : 'a' + temp - 10;
+    if (temp < 10) {
+        n = '0' + temp;
+    } else {
+        n = 'a' + temp - 10;
+    }
     write(1, &n, 1);
 
     temp = str & 0xF;
-    n = temp < 10 ? '0' + temp : 'a' + temp - 10;
+    if (temp < 10) {
+        n = '0' + temp;
+    } else {
+        n = 'a' + temp - 10;
+    }
     write(1, &n, 1);
 }
 
 void ft_putstr_non_printable(char *str) {
     int i = 0;
-    while (str[i]) {
-        if (is_printable(str[i]))
+    while (str[i] != '\0') {
+        if (is_printable(str[i])) {
             write(1, &str[i], 1);
-        else
+        } else {
             hex_conv(str[i]);
+        }
         i++;
     }
 }
