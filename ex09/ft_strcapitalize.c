@@ -12,55 +12,39 @@
 
 #include <stdio.h>
 
-int	is_alpha(char c)
-{
-	return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
+int is_alpha(char c) {
+    return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
 }
 
-int	lowercase(char c)
-{
-	return ((c >= 'a' && c <= 'z'));
+char to_lowercase(char c) {
+    if (c >= 'A' && c <= 'Z')
+        return c + 32;
+    return c;
 }
 
-int	uppercase(char c)
-{
-	return ((c >= 'A' && c <= 'Z'));
+char to_uppercase(char c) {
+    if (c >= 'a' && c <= 'z')
+        return c - 32;
+    return c;
 }
 
-char	*ft_strcapitalize(char *str)
-{
-	int	i;
-	int	coso;
+char *ft_strcapitalize(char *str) {
+    int i = 0;
+    int coso = 1;
 
-	i = 0;
-	coso = 1;
-	while (str[i] != '\0')
-	{
-		if (is_alpha(str[i]))
-		{
-			if (coso)
-			{
-				if (lowercase(str[i]))
-				{
-					str[i] = uppercase(str[i]);
-				}
-				coso = 0;
-			}
-			else
-			{
-				if (uppercase(str[i]))
-				{
-					str[i] = lowercase(str[i]);
-				}
-			}
-		}
-		else
-		{
-			coso = 1;
-		}
-		i++;
-	}
-	return (str);
+    while (str[i]) {
+        if (is_alpha(str[i])) {
+            if (coso)
+                str[i] = to_uppercase(str[i]);
+            else
+                str[i] = to_lowercase(str[i]);
+            coso = 0;
+        } else {
+            coso = 1;
+        }
+        i++;
+    }
+    return str;
 }
 
 /*int	main(void)
