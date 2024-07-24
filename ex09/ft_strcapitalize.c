@@ -16,6 +16,10 @@ int is_alpha(char c) {
     return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
 }
 
+int is_alphanumeric(char c) {
+    return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9'));
+}
+
 char to_lowercase(char c) {
     if (c >= 'A' && c <= 'Z')
         return c + 32;
@@ -30,23 +34,24 @@ char to_uppercase(char c) {
 
 char *ft_strcapitalize(char *str) {
     int i = 0;
-    int coso = 1;
+    int new_word = 1;
 
     while (str[i]) {
         if (is_alpha(str[i])) {
-            if (coso)
+            if (new_word)
                 str[i] = to_uppercase(str[i]);
             else
                 str[i] = to_lowercase(str[i]);
-            coso = 0;
+            new_word = 0;
+        } else if (!is_alphanumeric(str[i])) {
+            new_word = 1;
         } else {
-            coso = 1;
+            new_word = 0; // if it's a number, we don't want to capitalize the next letter
         }
         i++;
     }
     return str;
 }
-
 /*int	main(void)
 {
 	char	str[] = "salut,
